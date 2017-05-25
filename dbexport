@@ -1,0 +1,35 @@
+> db.User.find()
+{ "_id" : ObjectId("5926a6450e251c65b554cda6"), "name" : "Alex", "age" : 25, "payments" : [ 10, 30, 50, 70, 9 ], "orders" : [ 1, 3, 5, 7 ] }
+{ "_id" : ObjectId("5926a66b0e251c65b554cda7"), "name" : "Bob", "age" : 31, "payments" : [ 11, 31, 51, 71 ], "orders" : [ 2, 3, 4, 5 ] }
+{ "_id" : ObjectId("5926a6a60e251c65b554cda8"), "name" : "Anthony", "age" : 35, "payments" : [ 1, 3, 5, 7 ], "orders" : [ 1, 2, 3, 4 ] }
+{ "_id" : ObjectId("5926a6d00e251c65b554cda9"), "name" : "Carl", "age" : 40, "payments" : [ 12, 32 ], "orders" : [ 4, 1 ] }
+
+
+db.Oder.find()
+{ "_id" : ObjectId("5926a79e0e251c65b554cdaa"), "name" : "Alex", "price" : 12 }
+{ "_id" : ObjectId("5926a7ac0e251c65b554cdab"), "name" : "Bob", "price" : 120 }
+{ "_id" : ObjectId("5926a7bc0e251c65b554cdac"), "name" : "Carl", "price" : 1300 
+
+
+Results:
+1).
+> db.User.find({"age": {$gt : 30, $lt: 40}})
+{ "_id" : ObjectId("5926a66b0e251c65b554cda7"), "name" : "Bob", "age" : 31, "payments" : [ 11, 31, 51, 71 ], "orders" : [ 2, 3, 4, 5 ] }
+{ "_id" : ObjectId("5926a6a60e251c65b554cda8"), "name" : "Anthony", "age" : 35, "payments" : [ 1, 3, 5, 7 ], "orders" : [ 1, 2, 3, 4 ] }
+
+2).
+> db.User.find().sort({"age": 1})
+{ "_id" : ObjectId("5926a6450e251c65b554cda6"), "name" : "Alex", "age" : 25, "payments" : [ 10, 30, 50, 70, 9 ], "orders" : [ 1, 3, 5, 7 ] }
+{ "_id" : ObjectId("5926a66b0e251c65b554cda7"), "name" : "Bob", "age" : 31, "payments" : [ 11, 31, 51, 71 ], "orders" : [ 2, 3, 4, 5 ] }
+{ "_id" : ObjectId("5926a6a60e251c65b554cda8"), "name" : "Anthony", "age" : 35, "payments" : [ 1, 3, 5, 7 ], "orders" : [ 1, 2, 3, 4 ] }
+{ "_id" : ObjectId("5926a6d00e251c65b554cda9"), "name" : "Carl", "age" : 40, "payments" : [ 12, 32 ], "orders" : [ 4, 1 ] }
+
+> db.Oder.find({"name": "Alex"})
+{ "_id" : ObjectId("5926a79e0e251c65b554cdaa"), "name" : "Alex", "price" : 12 }
+> 
+
+
+> db.Oder.insert({"name": "John","price": 350})
+WriteResult({ "nInserted" : 1 })
+
+
